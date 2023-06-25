@@ -1,0 +1,33 @@
+name: "Blog Manager Action"
+description: "A GitHub Action that uploads articles to your blogging platform"
+inputs:
+  medium_integration_token:
+    description: "Medium's Integration Token. Token can be retrieved at medium.com/me/settings/security, under 'Integration tokens'"
+    required: true
+  hashnode_integration_token:
+    description: "Hashnode's Integration Token. Token can be retrieved at hashnode.com/settings/developer"
+    required: true
+outputs:
+  urls:
+    description: "URLs where the article was published"
+    value: ${{ steps.run-script.outputs.urls }}
+runs:
+  using: "composite"
+  steps:
+    - name: Install Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+    - name: Setup and Install Poetry
+      uses: pronovic/setup-poetry@v1.2.0
+    - name: Install Dependencies
+      run: poetry install
+      shell: bash
+    - name: Pass Inputs to Shell
+      run: |
+              echo "INPUT_MEDIUM_INTEGRATION_TOKEN=${{ inputs.medium_integration_token }}" >> $GITHUB_ENV
+              echo "INPUT_HASHNODE_INTEGRATION_TOKEN=${{ inputs.hashnode_integration_token }}" >> $GITHUB_ENV
+      shell: bash
+    - name: run-script
+      run: python blog-manager-action/main.py
+      shell: Bash
