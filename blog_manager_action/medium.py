@@ -65,7 +65,7 @@ def publish_medium(article, cover_image_url=None, canonical_url=None):
             "status": "draft",
         },
     )
-
+    print("response:", res)
     res.raise_for_status()
     data = res.json()["data"]
     return (data["id"], data["url"])
