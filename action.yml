@@ -29,6 +29,13 @@ outputs:
 runs:
   using: "composite"
   steps:
+    - name: Configures Auto-Commit message in environment
+      run: echo "CI_COMMIT_MESSAGE=Apply output IDs to article files"
+    - name: Set environment variable "is-auto-commit"
+      if: github.event.commits[0].message == env.CI_COMMIT_MESSAGE && github.event.commits[0].author.name == env.CI_COMMIT_AUTHOR
+      run: echo "is-auto-commit=true" >> $GITHUB_ENV
+    - name: Display environment variable "is-auto-commit"
+      run: echo "is-auto-commit=${{ env.is-auto-commit }}"
     - name: Install Python
       id: setup-python
       uses: actions/setup-python@v4
@@ -67,13 +74,13 @@ runs:
       run: ls
       shell: bash
     - name: run-script
+      if: env.is-auto-commit == false
       run: |
         source .venv/bin/activate
         python blog_manager_action/main.py
       shell: bash
-    - name: Update article files
-      uses: test-room-7/action-update-file@v1
+    - uses: stefanzweifel/git-auto-commit-action@v4
+      if: env.is-auto-commit == false
       with:
-        file-path: ./**/article.md
-        commit-msg: Update article files
-        github-token: ${{ inputs.github_token }}
+        commit_message: env.CI_COMMIT_MESSAGE
+        file_pattern: "**/article.md"
