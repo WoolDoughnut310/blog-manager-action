@@ -37,9 +37,12 @@ def publish_hashnode(article, cover_image_url=None):
 
     json = res.json()
 
-    if json.errors and len(json.errors) > 0:
-        exit(", ".join([e.message for e in json.errors]))
+    if json.errors and len(json["errors"]) > 0:
+        exit(", ".join([e["message"] for e in json["errors"]]))
 
-    post = json.post
+    post = json["post"]
 
-    return (post.cuid, f'https://{os.environ.get("HASHNODE_HOSTNAME")}/{post.slug}')
+    return (
+        post["cuid"],
+        f'https://{os.environ.get("HASHNODE_HOSTNAME")}/{post["slug"]}',
+    )

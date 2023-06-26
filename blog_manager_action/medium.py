@@ -15,7 +15,7 @@ def get_user_id():
     )
     res.raise_for_status()
     print("json for user request", res.json())
-    return res.json().data.id
+    return res.json()["data"]["id"]
 
 
 def create_canonical_reference(url):
@@ -67,5 +67,5 @@ def publish_medium(article, cover_image_url=None, canonical_url=None):
     )
 
     res.raise_for_status()
-    data = res.json().data
-    return (data.id, data.url)
+    data = res.json()["data"]
+    return (data["id"], data["url"])
