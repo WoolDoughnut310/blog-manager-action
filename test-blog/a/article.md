@@ -1,5 +1,5 @@
 ---
-medium_id: 8f209c525660
+medium_id: 1db5259877ad
 slug: foo-bar
 tags:
 - school
@@ -8,6 +8,7 @@ tags:
 title: foo
 ---
 
+# foo
 # foo
 # foo
 # foo
