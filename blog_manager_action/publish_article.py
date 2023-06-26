@@ -51,18 +51,22 @@ def replace_image_links(markdown, images):
     return new_content
 
 
-def publish_article(folder, is_updating):
+def publish_article(folder):
     repo = get_repo()
     contents = repo.get_contents(folder)
 
     article_file = next(file.name == "article.md" for file in contents)
+    print("article file:", article_file)
     article = article_file.decoded_content
+    print("content", article)
 
     # Upload all the images within the folder to the CDN
     images = get_image_links(contents)
+    print("images", images)
 
     # Replace all image references with their uploaded CDN URLs
     article = replace_image_links(article, images)
+    print("imagified article", article)
 
     # Tag `.metadata` onto article, using frontmatter
     article = frontmatter.loads(article)
@@ -74,7 +78,7 @@ def publish_article(folder, is_updating):
     # print(f"Published to Hashnode at {hashnode_url}")
     # print(f"::set-output name=hashnode_id::{hashnode_id}")
     # print(f"::set-output name=hashnode_url::{hashnode_url}")
-
+    hashnode_url = None
     medium_id, medium_url = publish_medium(article, cover_image_url, hashnode_url)
     print(f"Published to Medium at {medium_url}")
     print(f"::set-output name=medium_id::{medium_id}")

@@ -6,6 +6,6 @@ commit = get_last_commit()
 
 folders = extract_article_folders(commit.files)
 
-
 for folder in folders.keys():
+    print("article folder:", folder)
     publish_article(folder, folders[folder])
