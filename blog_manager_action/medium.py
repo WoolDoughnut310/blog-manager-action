@@ -14,6 +14,7 @@ def get_user_id():
         },
     )
     res.raise_for_status()
+    print("json for user request", res.json())
     return res.json().data.id
 
 
