@@ -1,13 +1,10 @@
 ---
-medium_id: f21a9d97b2ed
-slug: foo-bar
+title: foo
 tags:
 - school
 - computer
 - house
-title: foo
+slug: foo-bar
 ---
 
-# foo
-# foo
 Hello! This is a test article to showcase my new GitHub Action.
