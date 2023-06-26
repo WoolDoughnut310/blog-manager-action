@@ -37,12 +37,12 @@ runs:
       shell: bash
     - name: Pass Inputs to Shell
       run: |
-              echo "INPUT_MEDIUM_INTEGRATION_TOKEN=${{ inputs.medium_integration_token }}" >> $GITHUB_ENV
-              echo "INPUT_HASHNODE_INTEGRATION_TOKEN=${{ inputs.hashnode_integration_token }}" >> $GITHUB_ENV
+              echo "MEDIUM_INTEGRATION_TOKEN=${{ inputs.medium_integration_token }}" >> $GITHUB_ENV
+              echo "HASHNODE_INTEGRATION_TOKEN=${{ inputs.hashnode_integration_token }}" >> $GITHUB_ENV
       shell: bash
     - name: run-script
-      run: python blog-manager-action/main.py
-      shell: Bash
+      run: blog-manager-action/main.py
+      shell: python
     - name: Update article files
       uses: test-room-7/action-update-file@v1
       with:
