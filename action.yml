@@ -36,6 +36,8 @@ runs:
       if: github.event.commits[0].message == env.CI_COMMIT_MESSAGE
       run: echo "is-auto-commit=true" >> $GITHUB_ENV
       shell: bash
+    - name: Display Github event variable "github.event.commits[0].message"
+      run: echo "last commit message = ${{ github.event.commits[0].message }}"
     - name: Display environment variable "is-auto-commit"
       run: echo "is-auto-commit=${{ env.is-auto-commit }}"
       shell: bash
