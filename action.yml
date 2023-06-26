@@ -37,17 +37,17 @@ runs:
       id: cached-poetry
       uses: actions/cache@v3
       with:
-        path: ~/.local  # the path depends on the OS
-        key: poetry-0  # increment to reset cache
+        path: ~/.local # the path depends on the OS
+        key: poetry-0 # increment to reset cache
     - name: Install Poetry
       if: steps.cached-poetry.outputs.cache-hit != 'true'
       uses: snok/install-poetry@v1.3.3
     - name: Install dependencies
-        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
-        run: poetry install --no-interaction --no-root
+      if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
+      run: poetry install --no-interaction --no-root
     - name: Install project
-        run: poetry install --no-interaction
-    
+      run: poetry install --no-interaction
+
     - name: Pass Inputs to Shell
       run: |
         echo "MEDIUM_INTEGRATION_TOKEN=${{ inputs.medium_integration_token }}" >> $GITHUB_ENV
