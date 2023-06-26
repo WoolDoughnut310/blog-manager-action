@@ -72,7 +72,7 @@ def publish_article(folder, is_updating=False):
     article = frontmatter.loads(article)
 
     # Publish to blogging platforms
-    cover_image_url = images[COVER_IMAGE_NAME]
+    cover_image_url = images.get(COVER_IMAGE_NAME)
 
     # hashnode_id, hashnode_url = publish_hashnode(article, cover_image_url)
     # print(f"Published to Hashnode at {hashnode_url}")
