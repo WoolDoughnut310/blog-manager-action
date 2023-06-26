@@ -89,7 +89,7 @@ def publish_article(folder):
 
     repo.update_file(
         f"{folder}/article.md",
-        "feat: add published article IDs",
+        os.environ.get("CI_COMMIT_MESSAGE"),
         frontmatter.dumps(article),
         article_file.sha,
     )

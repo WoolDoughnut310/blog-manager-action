@@ -30,7 +30,7 @@ runs:
   using: "composite"
   steps:
     - name: Configures Auto-Commit message in environment
-      run: echo "CI_COMMIT_MESSAGE=Apply output IDs to article files"
+      run: echo "CI_COMMIT_MESSAGE=Apply output IDs to article files" >> $GITHUB_ENV
       shell: bash
     - name: Set environment variable "is-auto-commit"
       if: github.event.commits[0].message == env.CI_COMMIT_MESSAGE
@@ -85,8 +85,5 @@ runs:
         source .venv/bin/activate
         python blog_manager_action/main.py
       shell: bash
-    - uses: stefanzweifel/git-auto-commit-action@v4
-      if: env.is-auto-commit == false
-      with:
-        commit_message: env.CI_COMMIT_MESSAGE
-        file_pattern: "**/article.md"
+    - name: Push to GitHub
+      run: git push origin main
