@@ -1,7 +1,3 @@
-from dotenv import load_dotenv
-
-load_dotenv()
-
 from .connections import get_last_commit
 from .extract_article_folders import extract_article_folders
 from .publish_article import publish_article

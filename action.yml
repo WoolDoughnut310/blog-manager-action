@@ -10,6 +10,9 @@ inputs:
   github_token:
     description: "A GitHub PAT"
     required: true
+  imgbb_api_key:
+    description: "API Key for Imgbb CDN"
+    required: true
 outputs:
   hashnode_id:
     description: "ID of the Hashnode Post"
@@ -39,6 +42,7 @@ runs:
       run: |
               echo "MEDIUM_INTEGRATION_TOKEN=${{ inputs.medium_integration_token }}" >> $GITHUB_ENV
               echo "HASHNODE_INTEGRATION_TOKEN=${{ inputs.hashnode_integration_token }}" >> $GITHUB_ENV
+              echo "IMGBB_API_KEY=${{ inputs.hashnode_integration_token }}" >> $GITHUB_ENV
       shell: bash
     - name: run-script
       run: blog-manager-action/main.py
