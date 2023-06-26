@@ -55,7 +55,7 @@ def publish_article(folder, is_updating=False):
     repo = get_repo()
     contents = repo.get_contents(folder)
 
-    article_file = next(file.name == "article.md" for file in contents)
+    article_file = next(file for file in contents if file.name == "article.md")
     print("article file:", article_file)
     article = article_file.decoded_content
     print("content", article)
