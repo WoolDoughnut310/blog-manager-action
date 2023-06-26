@@ -4,9 +4,7 @@ from github import UnknownObjectException
 
 def extract_article_folders(files):
     repo = get_repo()
-
-    # Maps folder name to whether an article should be updated or not
-    folders = {}
+    folders = []
 
     for file in files:
         parts = file.filename.split("/")
@@ -19,14 +17,7 @@ def extract_article_folders(files):
                 if any(
                     ["article.md" in file_content.name for file_content in dir_contents]
                 ):
-                    if parts[i] not in folders:
-                        folders[folder] = True
-
-                    # Create if `article.md` has been created
-                    if not (
-                        parts[-1] == "article.md" and file.additions == file.changes
-                    ):
-                        folders[folder] = False
+                    folders.append(folder)
                     break
             except UnknownObjectException:
                 pass

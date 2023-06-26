@@ -7,6 +7,6 @@ print("extracting folders")
 folders = extract_article_folders(commit.files)
 print("out folders:", folders)
 
-for folder in folders.keys():
+for folder in folders:
     print("article folder:", folder)
-    publish_article(folder, folders[folder])
+    publish_article(folder)
