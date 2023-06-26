@@ -59,6 +59,7 @@ runs:
         echo "MEDIUM_INTEGRATION_TOKEN=${{ inputs.medium_integration_token }}" >> $GITHUB_ENV
         echo "HASHNODE_INTEGRATION_TOKEN=${{ inputs.hashnode_integration_token }}" >> $GITHUB_ENV
         echo "IMGBB_API_KEY=${{ inputs.hashnode_integration_token }}" >> $GITHUB_ENV
+        echo "GITHUB_TOKEN=${{ inputs.github_token }}" >> $GITHUB_ENV
       shell: bash
     - name: Check Dirs
       run: ls
