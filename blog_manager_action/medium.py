@@ -62,14 +62,14 @@ def publish_medium(article, cover_image_url=None, canonical_url=None):
             "tags": article["tags"],
             "canonicalUrl": canonical_url,
             # change to public
-            "status": "draft",
+            "publishStatus": "draft",
         },
     )
     print("response:", res.json())
 
     json = res.json()
 
-    if json.get("errors") and len(json["errors"] > 0):
+    if json.get("errors") and len(json["errors"]) > 0:
         exit(json["errors"][0]["message"])
 
     data = json["data"]
