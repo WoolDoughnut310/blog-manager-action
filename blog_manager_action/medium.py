@@ -1,8 +1,8 @@
 import requests
 import os
 
-from .connections import get_github
-from .patterns import MARKDOWN_CODE_BLOCK
+from connections import get_github
+from patterns import MARKDOWN_CODE_BLOCK
 from urllib.parse import urlparse
 
 

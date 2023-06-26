@@ -1,11 +1,11 @@
-from .connections import get_repo
-from .patterns import MARKDOWN_IMAGE
+from connections import get_repo
+from patterns import MARKDOWN_IMAGE
 import requests
 import os
 import mimetypes
 import frontmatter
-from .hashnode import publish_hashnode
-from .medium import publish_medium
+from hashnode import publish_hashnode
+from medium import publish_medium
 
 COVER_IMAGE_NAME = "cover.png"
 
