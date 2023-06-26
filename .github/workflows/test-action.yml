@@ -7,10 +7,10 @@ jobs:
     name: Returns the published URL
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Run publishing script
         id: run_script
-        uses: wooldoughnut310/blog-manager-action
+        uses: wooldoughnut310/blog-manager-action@main
         with:
           medium_integration_token: ${{ secrets.medium_integration_token }}
           hashnode_integration_token: ${{ secrets.hashnode_integration_token }}
