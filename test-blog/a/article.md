@@ -1,10 +1,10 @@
 ---
-medium_id: 1ae5f534ad0b
+medium_id: 351abd169b4a
 slug: foo-bar
 tags:
-  - school
-  - computer
-  - house
+- school
+- computer
+- house
 title: foo
 ---
 
