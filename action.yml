@@ -17,7 +17,7 @@ outputs:
   medium_id:
     description: "ID of the Medium Post"
     value: ${{ steps.run-script.outputs.medium_id }}
-  medium_id:
+  medium_url:
     description: "URL of the Medium Post"
     value: ${{ steps.run-script.outputs.medium_url }}
 runs:
