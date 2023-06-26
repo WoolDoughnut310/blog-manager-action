@@ -31,11 +31,14 @@ runs:
   steps:
     - name: Configures Auto-Commit message in environment
       run: echo "CI_COMMIT_MESSAGE=Apply output IDs to article files"
+      shell: bash
     - name: Set environment variable "is-auto-commit"
       if: github.event.commits[0].message == env.CI_COMMIT_MESSAGE && github.event.commits[0].author.name == env.CI_COMMIT_AUTHOR
       run: echo "is-auto-commit=true" >> $GITHUB_ENV
+      shell: bash
     - name: Display environment variable "is-auto-commit"
       run: echo "is-auto-commit=${{ env.is-auto-commit }}"
+      shell: bash
     - name: Install Python
       id: setup-python
       uses: actions/setup-python@v4
