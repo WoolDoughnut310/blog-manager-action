@@ -87,3 +87,4 @@ runs:
       shell: bash
     - name: Push to GitHub
       run: git push origin main
+      shell: bash
