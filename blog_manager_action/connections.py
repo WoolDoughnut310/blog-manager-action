@@ -2,7 +2,10 @@ from github import Github
 from github import Auth
 import os
 
+print(os.environ)
+
 _auth = _gh = _repo = _last_commit = None
+
 
 def get_auth():
     global _auth
@@ -10,17 +13,20 @@ def get_auth():
         _auth = Auth.Token(os.environ.get("GITHUB_TOKEN"))
     return _auth
 
+
 def get_github():
     global _gh
     if not _gh:
         _gh = Github(auth=get_auth())
     return _gh
 
+
 def get_repo():
     global _repo
     if not _repo:
         _repo = get_github().get_repo(os.environ.get("GITHUB_REPO"))
     return _repo
+
 
 def get_last_commit():
     global _last_commit
