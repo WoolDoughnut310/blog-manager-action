@@ -14,7 +14,7 @@ jobs:
         with:
           medium_integration_token: ${{ secrets.medium_integration_token }}
           hashnode_integration_token: ${{ secrets.hashnode_integration_token }}
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.token }}
           imgbb_api_key: ${{ secrets.imgbb_api_key }}
       - name: Print the output
         run: echo "${{ steps.execute.outputs.medium_url }}"
