@@ -60,7 +60,7 @@ runs:
         echo "HASHNODE_INTEGRATION_TOKEN=${{ inputs.hashnode_integration_token }}" >> $GITHUB_ENV
         echo "IMGBB_API_KEY=${{ inputs.hashnode_integration_token }}" >> $GITHUB_ENV
         echo "GITHUB_TOKEN=${{ inputs.github_token }}" >> $GITHUB_ENV
-        echo "GITHUB_REPOSITORY=${{ github.repo }}" >> $GITHUB_ENV
+        echo "GITHUB_REPOSITORY=${{ github.repository }}" >> $GITHUB_ENV
         echo "GITHUB_SHA=${{ github.sha }}" >> $GITHUB_ENV
       shell: bash
     - name: Check Dirs
