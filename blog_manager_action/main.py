@@ -13,5 +13,3 @@ folders = extract_article_folders(commit.files)
 
 for folder in folders.keys():
     publish_article(folder, folders[folder])
-
-print(f"::set-output name=urls::test")
