@@ -7,6 +7,9 @@ inputs:
   hashnode_integration_token:
     description: "Hashnode's Integration Token. Token can be retrieved at hashnode.com/settings/developer"
     required: true
+  github_token:
+    description: "A GitHub PAT"
+    required: true
 outputs:
   hashnode_id:
     description: "ID of the Hashnode Post"
@@ -45,4 +48,4 @@ runs:
       with:
           file-path: ./**/article.md
           commit-msg: Update article files
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ inputs.github_token }}

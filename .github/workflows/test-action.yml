@@ -14,5 +14,6 @@ jobs:
         with:
           medium_integration_token: ${{ secrets.medium_integration_token }}
           hashnode_integration_token: ${{ secrets.hashnode_integration_token }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
       - name: Print the output
         run: echo "${{ steps.run_script.outputs.medium_url }}"
