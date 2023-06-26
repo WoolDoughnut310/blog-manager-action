@@ -24,7 +24,7 @@ def get_github():
 def get_repo():
     global _repo
     if not _repo:
-        _repo = get_github().get_repo(os.environ.get("GITHUB_REPO"))
+        _repo = get_github().get_repo(os.environ.get("GITHUB_REPOSITORY"))
     return _repo
 
 
