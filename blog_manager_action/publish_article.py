@@ -88,7 +88,7 @@ def publish_article(folder, is_updating=False):
     article["medium_id"] = medium_id
 
     repo.update_file(
-        folder,
+        f"{folder}/article.md",
         "feat: add published article IDs",
         frontmatter.dumps(article),
         article_file.sha,
