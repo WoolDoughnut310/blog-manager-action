@@ -32,7 +32,7 @@ runs:
     - name: Install Python
       uses: actions/setup-python@v4
       with:
-        python-version: '3.10'
+        python-version: "3.10"
     - name: Setup and Install Poetry
       uses: pronovic/setup-poetry@v1.2.0
     - name: Install Dependencies
@@ -40,16 +40,16 @@ runs:
       shell: bash
     - name: Pass Inputs to Shell
       run: |
-              echo "MEDIUM_INTEGRATION_TOKEN=${{ inputs.medium_integration_token }}" >> $GITHUB_ENV
-              echo "HASHNODE_INTEGRATION_TOKEN=${{ inputs.hashnode_integration_token }}" >> $GITHUB_ENV
-              echo "IMGBB_API_KEY=${{ inputs.hashnode_integration_token }}" >> $GITHUB_ENV
+        echo "MEDIUM_INTEGRATION_TOKEN=${{ inputs.medium_integration_token }}" >> $GITHUB_ENV
+        echo "HASHNODE_INTEGRATION_TOKEN=${{ inputs.hashnode_integration_token }}" >> $GITHUB_ENV
+        echo "IMGBB_API_KEY=${{ inputs.hashnode_integration_token }}" >> $GITHUB_ENV
       shell: bash
     - name: run-script
-      run: blog-manager-action/main.py
-      shell: python
+      run: python blog-manager-action/main.py
+      shell: bash
     - name: Update article files
       uses: test-room-7/action-update-file@v1
       with:
-          file-path: ./**/article.md
-          commit-msg: Update article files
-          github-token: ${{ inputs.github_token }}
+        file-path: ./**/article.md
+        commit-msg: Update article files
+        github-token: ${{ inputs.github_token }}
