@@ -45,7 +45,7 @@ runs:
         echo "IMGBB_API_KEY=${{ inputs.hashnode_integration_token }}" >> $GITHUB_ENV
       shell: bash
     - name: run-script
-      run: python blog-manager-action/main.py
+      run: python main.py
       shell: bash
     - name: Update article files
       uses: test-room-7/action-update-file@v1
