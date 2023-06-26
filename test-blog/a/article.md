@@ -1,5 +1,5 @@
 ---
-medium_id: 4594ff1a37af
+medium_id: 1d73b9d49b1e
 slug: foo-bar
 tags:
 - school
