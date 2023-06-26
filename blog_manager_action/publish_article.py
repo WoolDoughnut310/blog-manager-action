@@ -57,7 +57,7 @@ def publish_article(folder, is_updating=False):
 
     article_file = next(file for file in contents if file.name == "article.md")
     print("article file:", article_file)
-    article = article_file.decoded_content
+    article = article_file.decoded_content.decode()
     print("content", article)
 
     # Upload all the images within the folder to the CDN
