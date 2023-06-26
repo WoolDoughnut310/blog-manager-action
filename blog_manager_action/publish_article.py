@@ -51,7 +51,7 @@ def replace_image_links(markdown, images):
     return new_content
 
 
-def publish_article(folder):
+def publish_article(folder, is_updating=False):
     repo = get_repo()
     contents = repo.get_contents(folder)
 
