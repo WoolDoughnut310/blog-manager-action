@@ -9,7 +9,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Run publishing script
-        id: run_script
+        id: execute
         uses: WoolDoughnut310/blog-manager-action@main
         with:
           medium_integration_token: ${{ secrets.medium_integration_token }}
@@ -17,4 +17,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           imgbb_api_key: ${{ secrets.imgbb_api_key }}
       - name: Print the output
-        run: echo "${{ steps.run_script.outputs.medium_url }}"
+        run: echo "${{ steps.execute.outputs.medium_url }}"
