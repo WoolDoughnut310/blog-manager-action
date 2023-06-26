@@ -43,6 +43,6 @@ runs:
     - name: Update article files
       uses: test-room-7/action-update-file@v1
       with:
-          file-path: **/article.md
+          file-path: ./**/article.md
           commit-msg: Update article files
           github-token: ${{ secrets.GITHUB_TOKEN }}
