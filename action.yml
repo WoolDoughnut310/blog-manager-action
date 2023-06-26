@@ -29,6 +29,7 @@ outputs:
 runs:
   using: "composite"
   steps:
+    - uses: actions/checkout@v3
     - name: Install Python
       uses: actions/setup-python@v4
       with:
@@ -45,7 +46,7 @@ runs:
         echo "IMGBB_API_KEY=${{ inputs.hashnode_integration_token }}" >> $GITHUB_ENV
       shell: bash
     - name: run-script
-      run: python main.py
+      run: python blog-manager-action/main.py
       shell: bash
     - name: Update article files
       uses: test-room-7/action-update-file@v1
