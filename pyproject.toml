@@ -8,6 +8,11 @@ packages = [{include = "blog_manager_action"}]
 
 [tool.poetry.dependencies]
 python = "^3.9"
+pygithub = "^1.59.0"
+medium-api = "^0.5.4"
+requests = "^2.31.0"
+python-dotenv = "^1.0.0"
+python-frontmatter = "^1.0.0"
 
 
 [build-system]

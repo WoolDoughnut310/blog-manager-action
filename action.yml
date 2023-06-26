@@ -8,9 +8,18 @@ inputs:
     description: "Hashnode's Integration Token. Token can be retrieved at hashnode.com/settings/developer"
     required: true
 outputs:
-  urls:
-    description: "URLs where the article was published"
-    value: ${{ steps.run-script.outputs.urls }}
+  hashnode_id:
+    description: "ID of the Hashnode Post"
+    value: ${{ steps.run-script.outputs.hashnode_id }}
+  hashnode_url:
+    description: "URL of the Hashnode Post"
+    value: ${{ steps.run-script.outputs.hashnode_url }}
+  medium_id:
+    description: "ID of the Medium Post"
+    value: ${{ steps.run-script.outputs.medium_id }}
+  medium_id:
+    description: "URL of the Medium Post"
+    value: ${{ steps.run-script.outputs.medium_url }}
 runs:
   using: "composite"
   steps:
@@ -31,3 +40,9 @@ runs:
     - name: run-script
       run: python blog-manager-action/main.py
       shell: Bash
+    - name: Update article files
+      uses: test-room-7/action-update-file@v1
+      with:
+          file-path: **/article.md
+          commit-msg: Update article files
+          github-token: ${{ secrets.GITHUB_TOKEN }}
