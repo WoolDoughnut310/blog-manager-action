@@ -1,5 +1,5 @@
 ---
-medium_id: 72429368ffea
+medium_id: 18a346baceb
 slug: foo-bar
 tags:
 - school
@@ -8,6 +8,7 @@ tags:
 title: foo
 ---
 
+# foo
 # foo
 # foo
 Hello! This is a test article to showcase my new GitHub Action.
