@@ -3,7 +3,7 @@ from extract_article_folders import extract_article_folders
 from publish_article import publish_article
 
 commit = get_last_commit()
-
+print("extracting folders")
 folders = extract_article_folders(commit.files)
 
 for folder in folders.keys():

@@ -1,8 +1,6 @@
 from connections import get_repo
 from github import UnknownObjectException
 
-repo = get_repo()
-
 
 def extract_article_folders(files):
     repo = get_repo()
@@ -19,7 +17,7 @@ def extract_article_folders(files):
 
                 # If `article.md` exists within the directory
                 if any(
-                    ["app.html" in file_content.name for file_content in dir_contents]
+                    ["article.md" in file_content.name for file_content in dir_contents]
                 ):
                     if parts[i] not in folders:
                         folders[parts[i]] = True
