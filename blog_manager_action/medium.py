@@ -68,7 +68,7 @@ def publish_medium(article, cover_image_url=None, canonical_url=None):
         json={
             "title": article["title"],
             "contentFormat": "markdown",
-            "content": transform_content(article.content),
+            "content": transform_content(article),
             "tags": article.get("tags", []),
             "canonicalUrl": canonical_url,
             # change to public
