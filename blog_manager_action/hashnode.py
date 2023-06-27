@@ -21,7 +21,7 @@ def publish_hashnode(article, cover_image_url=None):
             "title": article["title"],
             "slug": article["slug"],
             "contentMarkdown": article.content,
-            "tags": article["tags"],
+            "tags": article.get("hashnode_tags", []),
             "isPartOfPublication": { "publicationId": os.environ.get("HASHNODE_PUBLICATION_ID") }
         }
     }
