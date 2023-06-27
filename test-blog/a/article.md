@@ -1,10 +1,10 @@
 ---
-title: foo
+slug: foo-bar
 tags:
 - school
 - computer
 - house
-slug: foo-bar
+title: foo
 ---
 
 Hello! This is a test article to showcase my new GitHub Action.
