@@ -85,6 +85,3 @@ runs:
         source .venv/bin/activate
         python blog_manager_action/main.py
       shell: bash
-    - name: Push to GitHub
-      run: git push origin main
-      shell: bash
