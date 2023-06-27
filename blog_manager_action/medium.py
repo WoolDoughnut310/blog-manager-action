@@ -70,7 +70,7 @@ def publish_medium(article, cover_image_url=None):
             "contentFormat": "markdown",
             "content": transform_content(article),
             "tags": article.get("tags", []),
-            "canonicalUrl": canonical_url,
+            "canonicalUrl": article.get("canonical_url"),
             # change to public
             "publishStatus": "draft",
         },
