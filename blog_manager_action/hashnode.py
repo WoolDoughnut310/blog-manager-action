@@ -3,8 +3,8 @@ import os
 
 
 def publish_hashnode(article, cover_image_url=None):
-    query = """mutation CreateStory($title: String!, $slug: String, $contentMarkdown: String!, $coverImageURL: String, $tags: [TagInput]) {
-                createStory(input: { title: ${title}, contentMarkdown: ${content}, tags: [] }) {
+    query = """mutation CreatePublicationStory($publicationId: String!, $title: String!, $slug: String, $contentMarkdown: String!, $coverImageURL: String, $tags: [TagsInput]) {
+                createPublicationStory(publicationId: $publicationId, input: { title: $title, contentMarkdown: $content, tags: [] }) {
                     code,
                     success,
                     message
@@ -17,6 +17,7 @@ def publish_hashnode(article, cover_image_url=None):
         )
 
     variables = {
+        "publicationId": os.environ.get("HASHNODE_PUBLICATION_ID"),
         "title": article["title"],
         "slug": article["slug"],
         "contentMarkdown": article.content,
@@ -28,7 +29,7 @@ def publish_hashnode(article, cover_image_url=None):
 
     res = requests.post(
         "https://api.hashnode.com",
-        {
+        json={
             "query": query,
             "variables": variables,
         },

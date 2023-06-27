@@ -7,6 +7,12 @@ inputs:
   hashnode_integration_token:
     description: "Hashnode's Integration Token. Token can be retrieved at hashnode.com/settings/developer"
     required: true
+  hashnode_hostname:
+    description: "Hostname for Hashnode blog. e.g. cs310.hashnode.dev"
+    required: true
+  hashnode_publication_id:
+    description: "Publication ID for Hashnode blog. Appears in your Blog Dashboard page URL"
+    required: true
   github_token:
     description: "A GitHub PAT"
     required: true
@@ -71,6 +77,8 @@ runs:
       run: |
         echo "MEDIUM_INTEGRATION_TOKEN=${{ inputs.medium_integration_token }}" >> $GITHUB_ENV
         echo "HASHNODE_INTEGRATION_TOKEN=${{ inputs.hashnode_integration_token }}" >> $GITHUB_ENV
+	echo "HASHNODE_HOSTNAME=${{ inputs.hashnode_hostname }}" >> $GITHUB_ENV
+	echo "HASHNODE_PUBLICATION_ID=${{ inputs.hashnode_publication_id }}" >> $GITHUB_ENV
         echo "IMGBB_API_KEY=${{ inputs.imgbb_api_key }}" >> $GITHUB_ENV
         echo "GITHUB_TOKEN=${{ inputs.github_token }}" >> $GITHUB_ENV
         echo "GITHUB_REPOSITORY=${{ github.repository }}" >> $GITHUB_ENV

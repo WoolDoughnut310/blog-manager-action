@@ -46,15 +46,19 @@ def gistify_code_blocks(markdown):
 
 def publish_medium(article, cover_image_url=None, canonical_url=None):
     user_id = get_user_id()
+    
+    def transform_content(article):
+        content = gistify_code_blocks(article.content)
+        if "medium_id" not in article.keys():
+            content = f"# {article['title']}\n" + content
 
-    if "medium_id" not in article.keys():
-        article.content = f"# {article['title']}\n" + article.content
+        if cover_image_url:
+            content = f"![cover image]({cover_image_url})\n" + content
 
-    if cover_image_url:
-        article.content = f"![cover image]({cover_image_url})\n" + article.content
+        if canonical_url:
+            content += create_canonical_reference(canonical_url)
 
-    if canonical_url:
-        article.content += create_canonical_reference(canonical_url)
+        return content
 
     res = requests.post(
         f"https://api.medium.com/v1/users/{user_id}/posts",
@@ -64,7 +68,7 @@ def publish_medium(article, cover_image_url=None, canonical_url=None):
         json={
             "title": article["title"],
             "contentFormat": "markdown",
-            "content": gistify_code_blocks(article.content),
+            "content": transform_content(article.content),
             "tags": article["tags"],
             "canonicalUrl": canonical_url,
             # change to public
