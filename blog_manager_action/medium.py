@@ -82,5 +82,4 @@ def publish_medium(article, cover_image_url=None, canonical_url=None):
     if json.get("errors") and len(json["errors"]) > 0:
         exit(json["errors"][0]["message"])
 
-    data = json["data"]
-    return (data["id"], data["url"])
+    return json["data"]["url"]

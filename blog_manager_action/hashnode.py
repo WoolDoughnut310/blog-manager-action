@@ -46,7 +46,4 @@ def publish_hashnode(article, cover_image_url=None):
 
     post = json["data"]["post"]
 
-    return (
-        post["cuid"],
-        f'https://{os.environ.get("HASHNODE_HOSTNAME")}/{post["slug"]}',
-    )
+    return f'https://{os.environ.get("HASHNODE_HOSTNAME")}/{post["slug"]}'

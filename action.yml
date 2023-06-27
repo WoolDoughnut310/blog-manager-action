@@ -20,15 +20,9 @@ inputs:
     description: "API Key for Imgbb CDN"
     required: true
 outputs:
-  hashnode_id:
-    description: "ID of the Hashnode Post"
-    value: ${{ steps.run-script.outputs.hashnode_id }}
   hashnode_url:
     description: "URL of the Hashnode Post"
     value: ${{ steps.run-script.outputs.hashnode_url }}
-  medium_id:
-    description: "ID of the Medium Post"
-    value: ${{ steps.run-script.outputs.medium_id }}
   medium_url:
     description: "URL of the Medium Post"
     value: ${{ steps.run-script.outputs.medium_url }}

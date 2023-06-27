@@ -18,5 +18,3 @@ jobs:
           hashnode_publication_id: ${{ secrets.hashnode_publication_id }}
           github_token: ${{ secrets.token }}
           imgbb_api_key: ${{ secrets.imgbb_api_key }}
-      - name: Print the output
-        run: echo "${{ steps.execute.outputs.medium_url }}"
