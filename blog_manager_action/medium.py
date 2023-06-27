@@ -33,7 +33,9 @@ def gistify_code_blocks(markdown):
     match = MARKDOWN_CODE_BLOCK.search(new_content)
 
     while match != None:
+        print("code match:", match)
         gist = user.create_gist(True, {match[1]: match[2]})
+        print("created gist!", gist)
         new_content = (
             new_content[: match.start()] + gist.html_url + new_content[match.end() :]
         )
