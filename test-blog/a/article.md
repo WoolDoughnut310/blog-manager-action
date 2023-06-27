@@ -1,4 +1,5 @@
 ---
+is_published: true
 slug: foo-bar
 tags:
 - school
