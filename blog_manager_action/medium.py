@@ -45,6 +45,8 @@ def gistify_code_blocks(markdown):
 def publish_medium(article, cover_image_url=None, canonical_url=None):
     user_id = get_user_id()
 
+    article.content = gistify_code_blocks(article.content)
+
     if "medium_id" not in article.keys():
         article.content = f"# {article['title']}\n" + article.content
 
