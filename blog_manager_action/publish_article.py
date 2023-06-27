@@ -87,9 +87,15 @@ def publish_article(folder):
     # article["hashnode_id"] = hashnode_id
     article["medium_id"] = medium_id
 
-    repo.update_file(
+    result = repo.update_file(
         f"{folder}/article.md",
         os.environ.get("CI_COMMIT_MESSAGE"),
         frontmatter.dumps(article),
         article_file.sha,
     )
+
+    new_commit = result["commit"].sha
+
+    # Push to remote
+    head = repo.get_git_ref("heads/main")
+    head.edit(new_commit)
