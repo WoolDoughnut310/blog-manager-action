@@ -37,8 +37,9 @@ def publish_hashnode(article, cover_image_url=None):
     )
 
     json = res.json()
+    print("hashnode json", json)
 
-    if json.errors and len(json["errors"]) > 0:
+    if json.get("errors") and len(json["errors"]) > 0:
         exit(", ".join([e["message"] for e in json["errors"]]))
 
     post = json["post"]
