@@ -78,18 +78,16 @@ def publish_article(folder):
     # Publish to blogging platforms
     cover_image_url = images.get(COVER_IMAGE_NAME)
 
-    hashnode_id, hashnode_url = publish_hashnode(article, cover_image_url)
+    hashnode_url = publish_hashnode(article, cover_image_url)
     print(f"Published to Hashnode at {hashnode_url}")
-    print(f"::set-output name=hashnode_id::{hashnode_id}")
     print(f"::set-output name=hashnode_url::{hashnode_url}")
     hashnode_url = None
-    medium_id, medium_url = publish_medium(article, cover_image_url, hashnode_url)
+
+    medium_url = publish_medium(article, cover_image_url, hashnode_url)
     print(f"Published to Medium at {medium_url}")
-    print(f"::set-output name=medium_id::{medium_id}")
     print(f"::set-output name=medium_url::{medium_url}")
 
-    article["hashnode_id"] = hashnode_id
-    article["medium_id"] = medium_id
+    article["is_published"] = True
 
     result = repo.update_file(
         f"{folder}/article.md",
