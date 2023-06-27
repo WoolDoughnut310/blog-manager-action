@@ -9,4 +9,5 @@ title: foo
 ---
 
 # foo
+![pic1](illustration1.png)
 Hello! This is a test article to showcase my new GitHub Action.
