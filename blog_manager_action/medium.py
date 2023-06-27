@@ -41,6 +41,7 @@ def gistify_code_blocks(markdown):
             new_content[: match.start()] + gist.html_url + new_content[match.end() :]
         )
         match = MARKDOWN_CODE_BLOCK.search(new_content)
+    return new_content
 
 
 def publish_medium(article, cover_image_url=None, canonical_url=None):
