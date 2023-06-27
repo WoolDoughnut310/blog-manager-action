@@ -4,6 +4,7 @@ import os
 from connections import get_github
 from patterns import MARKDOWN_CODE_BLOCK
 from urllib.parse import urlparse
+from github import InputFileContent
 
 
 def get_user_id():
@@ -34,7 +35,7 @@ def gistify_code_blocks(markdown):
 
     while match != None:
         print("code match:", match)
-        gist = user.create_gist(True, {match[1]: match[2]})
+        gist = user.create_gist(True, {match[1]: InputFileContent(match[2])})
         print("created gist!", gist)
         new_content = (
             new_content[: match.start()] + gist.html_url + new_content[match.end() :]
