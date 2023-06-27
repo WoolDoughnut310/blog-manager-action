@@ -1,5 +1,5 @@
 ---
-medium_id: 2a5f7a2428cc
+medium_id: 3183eb8c1538
 slug: foo-bar
 tags:
 - school
@@ -18,7 +18,4 @@ Hello! This is a test article to showcase my new GitHub Action.
 print("Hello Medium!")
 ```
 
-```javascript #hello.js
-// This should be converted to GistURL
-console.log("Hello Mediumers!");
-```
+https://gist.github.com/WoolDoughnut310/746f314db3f2ca81a5b58c4b4ea4de66
