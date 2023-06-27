@@ -13,8 +13,8 @@ def get_user_id():
             "Authorization": f"Bearer {os.environ.get('MEDIUM_INTEGRATION_TOKEN')}"
         },
     )
-    res.raise_for_status()
     print("json for user request", res.json())
+    res.raise_for_status()
     return res.json()["data"]["id"]
 
 

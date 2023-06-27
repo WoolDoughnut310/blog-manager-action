@@ -27,6 +27,7 @@ def get_image_links(files):
         )
 
         # Throw if status code != 200
+        print("image link response", res.json())
         res.raise_for_status()
         urls[file.name] = res.json()["data"]["url"]
     return urls
