@@ -6,6 +6,7 @@ tags:
 - computer
 - house
 title: foonimicus dominicus and what to do with him
+canonical_url: https://www.google.com/
 ---
 
 # foo

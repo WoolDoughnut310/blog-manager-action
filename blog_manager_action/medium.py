@@ -44,7 +44,7 @@ def gistify_code_blocks(markdown):
     return new_content
 
 
-def publish_medium(article, cover_image_url=None, canonical_url=None):
+def publish_medium(article, cover_image_url=None):
     user_id = get_user_id()
     
     def transform_content(article):
@@ -55,7 +55,7 @@ def publish_medium(article, cover_image_url=None, canonical_url=None):
         if cover_image_url:
             content = f"![cover image]({cover_image_url})\n" + content
 
-        if canonical_url:
+        if "canonical_url" in article.keys():
             content += create_canonical_reference(canonical_url)
 
         return content

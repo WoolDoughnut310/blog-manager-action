@@ -29,6 +29,9 @@ def publish_hashnode(article, cover_image_url=None):
     if cover_image_url:
         variables["input"]["coverImageURL"] = cover_image_url
 
+    if "canonical_url" in article.keys():
+        variables["input"]["isRepublished"] = { "originalArticleURL": article["canonical_url"] }
+
     res = requests.post(
         "https://api.hashnode.com",
         json={
