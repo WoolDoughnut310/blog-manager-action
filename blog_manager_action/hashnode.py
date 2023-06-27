@@ -17,15 +17,17 @@ def publish_hashnode(article, cover_image_url=None):
         )
 
     variables = {
-        "title": article["title"],
-        "slug": article["slug"],
-        "contentMarkdown": article.content,
-        "tags": article["tags"],
-        "isPartOfPublication": { "publicationId": os.environ.get("HASHNODE_PUBLICATION_ID") }
+        "input": {
+            "title": article["title"],
+            "slug": article["slug"],
+            "contentMarkdown": article.content,
+            "tags": article["tags"],
+            "isPartOfPublication": { "publicationId": os.environ.get("HASHNODE_PUBLICATION_ID") }
+        }
     }
 
     if cover_image_url:
-        variables["coverImageURL"] = cover_image_url
+        variables["input"]["coverImageURL"] = cover_image_url
 
     res = requests.post(
         "https://api.hashnode.com",

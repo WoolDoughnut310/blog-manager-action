@@ -5,7 +5,7 @@ tags:
 - school
 - computer
 - house
-title: foo
+title: foonimicus dominicus and wwhat to do with him
 ---
 
 # foo
