@@ -19,7 +19,7 @@ def publish_hashnode(article, cover_image_url=None):
     variables = {
         "input": {
             "title": article["title"],
-            "slug": article["slug"],
+            "slug": article.get("slug"),
             "contentMarkdown": article.content,
             "tags": article.get("hashnode_tags", []),
             "isPartOfPublication": { "publicationId": os.environ.get("HASHNODE_PUBLICATION_ID") }
@@ -44,6 +44,4 @@ def publish_hashnode(article, cover_image_url=None):
     if json.get("errors") and len(json["errors"]) > 0:
         exit(", ".join([e["message"] for e in json["errors"]]))
 
-    post = json["data"]["post"]
-
-    return f'https://{os.environ.get("HASHNODE_HOSTNAME")}/{post["slug"]}'
+    return f'https://{os.environ.get("HASHNODE_HOSTNAME")}'
