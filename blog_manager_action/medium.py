@@ -56,7 +56,7 @@ def publish_medium(article, cover_image_url=None):
             content = f"![cover image]({cover_image_url})\n" + content
 
         if "canonical_url" in article.keys():
-            content += create_canonical_reference(canonical_url)
+            content += create_canonical_reference(article["canonical_url"])
 
         return content
 
