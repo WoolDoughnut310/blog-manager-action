@@ -14,6 +14,8 @@ jobs:
         with:
           medium_integration_token: ${{ secrets.medium_integration_token }}
           hashnode_integration_token: ${{ secrets.hashnode_integration_token }}
+          hashnode_hostname: ${{ secrets.hashnode_hostname }}
+          hashnode_publication_id: ${{ secrets.hashnode_publication_id }}
           github_token: ${{ secrets.token }}
           imgbb_api_key: ${{ secrets.imgbb_api_key }}
       - name: Print the output
