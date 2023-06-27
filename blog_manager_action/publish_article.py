@@ -83,7 +83,7 @@ def publish_article(folder):
     print(f"::set-output name=hashnode_url::{hashnode_url}")
     hashnode_url = None
 
-    medium_url = publish_medium(article, cover_image_url, hashnode_url)
+    medium_url = publish_medium(article, cover_image_url)
     print(f"Published to Medium at {medium_url}")
     print(f"::set-output name=medium_url::{medium_url}")
 
