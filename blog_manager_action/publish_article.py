@@ -6,6 +6,7 @@ import mimetypes
 import frontmatter
 from hashnode import publish_hashnode
 from medium import publish_medium
+import re
 
 COVER_IMAGE_NAME = "cover.png"
 
@@ -35,19 +36,21 @@ def get_image_links(files):
 
 def replace_image_links(markdown, images):
     new_content = markdown
+
+    image_names = [re.escape(name) for name in images.keys()]
+
+    MARKDOWN_IMAGE = re.compile(
+        rf'!\[[^\]]*\]\(({"|".join(image_names)})\s*((?:\w+=)?"(?:.*[^"])")?\s*\)'
+    )
     match = MARKDOWN_IMAGE.search(new_content)
-
+    print("match", match)
     while match != None:
-        if match[1] not in images:
-            continue
-
         # Replace URL
         new_content = (
             new_content[: match.start(1)]
             + images[match[1]]
             + new_content[match.end(1) :]
         )
-
         match = MARKDOWN_IMAGE.search(new_content)
     return new_content
 
