@@ -2,10 +2,11 @@ import requests
 import os
 
 from connections import get_github
-from patterns import MARKDOWN_CODE_BLOCK
 from urllib.parse import urlparse
 from github import InputFileContent
+from re import compile
 
+MARKDOWN_CODE_BLOCK = compile(r"```(?:.+)?#(.+)\n((?:.|\n)+?)\n+```")
 
 def get_user_id():
     res = requests.get(
@@ -24,6 +25,8 @@ def create_canonical_reference(url):
         return ""
     parsed_url = urlparse(url)
     base_url = f"{parsed_url.scheme}://{parsed_url.hostname}"
+
+    # e.g. ... at [cs310.hashnode.dev](https://cs310.hashnode.dev/post-4)
     return f"\n\n---\n\n*Originally published at [{base_url}]({url}).*"
 
 
@@ -31,22 +34,30 @@ def gistify_code_blocks(markdown):
     gh = get_github()
     user = gh.get_user()
     new_content = markdown
-    match = MARKDOWN_CODE_BLOCK.search(new_content)
 
-    while match != None:
-        print("code match:", match)
-        gist = user.create_gist(True, {match[1]: InputFileContent(match[2])})
-        print("created gist!", gist)
+    re_match = MARKDOWN_CODE_BLOCK.search(new_content)
+
+    while re_match != None:
+        # Create a gist with the code block content and filename
+        gist = user.create_gist(True, {
+            re_match[1]: InputFileContent(re_match[2])
+        })
+
+        # Replace the code block in the markdown with the uploaded URL
         new_content = (
-            new_content[: match.start()] + gist.html_url + new_content[match.end() :]
+            new_content[: re_match.start()]
+                + gist.html_url
+                + new_content[re_match.end():]
         )
-        match = MARKDOWN_CODE_BLOCK.search(new_content)
+
+        re_match = MARKDOWN_CODE_BLOCK.search(new_content)
     return new_content
 
 
 def publish_medium(article, cover_image_url=None):
     user_id = get_user_id()
     
+    # Enrich the markdown content with title, cover image & canonical reference
     def transform_content(article):
         content = gistify_code_blocks(article.content)
         if "medium_id" not in article.keys():
@@ -75,7 +86,6 @@ def publish_medium(article, cover_image_url=None):
             "publishStatus": "draft",
         },
     )
-    print("response:", res.json())
 
     json = res.json()
 

@@ -241,17 +241,6 @@ files = [
 ]
 
 [[package]]
-name = "medium-api"
-version = "0.5.4"
-description = "Python Wrapper on top of Medium API to quickly extract data from https://medium.com."
-optional = false
-python-versions = ">=3.6"
-files = [
-    {file = "medium-api-0.5.4.tar.gz", hash = "sha256:2a7605662d80048c6aed4fbace44222c1c14c188499cbc794b975bafde9e5df2"},
-    {file = "medium_api-0.5.4-py3-none-any.whl", hash = "sha256:d38130e86ff6a8deec9e149fc73c740786a75d26342dc22b72de34f286ea49b8"},
-]
-
-[[package]]
 name = "pycparser"
 version = "2.21"
 description = "C parser in Python"
@@ -531,4 +520,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "574bbde48ec9ad186e0fd3462ab324f454b1c9a17da983acfeffdcb3d93715ed"
+content-hash = "8dd42ae9cbdb80e253c3724b7b2c421cb5b14ff6ad98dd4d0212eac20db44289"
