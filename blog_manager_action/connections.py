@@ -2,8 +2,6 @@ from github import Github
 from github import Auth
 import os
 
-print(os.environ)
-
 _auth = _gh = _repo = _last_commit = None
 
 
